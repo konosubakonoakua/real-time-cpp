@@ -8,8 +8,8 @@
 #include <algorithm>
 #include <cstdint>
 
-#include <math/constants/pi_digits_hash_sha1_control.h>
 #include <math/constants/pi_digits_100th_pi_digits.h>
+#include <math/constants/pi_digits_hash_sha1_control.h>
 #include <math/constants/pi_spigot_state.h>
 #include <mcal_lcd.h>
 #include <mcal_memory/mcal_memory_sram_array.h>
@@ -19,15 +19,15 @@
 
 namespace
 {
-  using sys_idle_pi_spigot_pi_spigot_type   = math::constants::pi_spigot_state<100001U, 9U>;
+  using sys_idle_pi_spigot_pi_spigot_type   = math::constants::pi_spigot_state<1001U, 9U>;
 
   constexpr mcal_sram_uintptr_t               sys_idle_pi_spigot_input_start_address = UINT32_C(0x00000000);
 
   constexpr mcal_sram_uintptr_t               sys_idle_pi_spigot_value_start_address =    sys_idle_pi_spigot_input_start_address
-                                                                                       + (sys_idle_pi_spigot_pi_spigot_type::get_input__static_size() * sizeof(std::uint32_t));
+                                                                                       + (sys_idle_pi_spigot_pi_spigot_type::get_input_static_size() * sizeof(std::uint32_t));
 
   using sys_idle_pi_spigot_input_type       = mcal::memory::sram::array<std::uint32_t,
-                                                                        sys_idle_pi_spigot_pi_spigot_type::get_input__static_size(),
+                                                                        sys_idle_pi_spigot_pi_spigot_type::get_input_static_size(),
                                                                         sys_idle_pi_spigot_input_start_address>;
 
   using sys_idle_pi_spigot_value_type       = mcal::memory::sram::array<std::uint8_t,
